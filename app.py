@@ -3,7 +3,6 @@ from urllib import response, request
 from flask import Flask, jsonify,render_template, request, redirect, url_for, session, logging,Response
 import boto3
 import os, requests
-import datetime
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
@@ -15,14 +14,6 @@ s3 = boto3.resource(
     aws_session_token="FwoGZXIvYXdzEAcaDNDPVhEOgkjFKg76sCLAAf4p55KivDzuFbAPKhJJFNxJGYoz+WnE/EmEOD2EFspMDfWPmJB1+6iZCqQ984o4vvECcuTDJdE54mb2kcPKyJ4+lKiIWJ8rxCztfhRY60nO7mujPL2ZYG13+pxhXfm9VlWcZgh9TkHpCCun0+vTwrdjT3Qe05Y2j1dXoI8iVzOV/dhc+p7ikBiLCL/xz7GZ41mwdu0gjIwADuk/XyIpn83y1Vbhxt3KshCDztBxouKCUp0VxegpBVrFk2Au90l0wyjMtIiRBjItWMygGb5xwmkkDf/9POfGJqxoGXgFj5bXrkPjFaH2lJciPrjECGRrR23bFljS"
 )
 
-initial = {
-"banner": "B00872298",
-"ip": "3.85.50.76"
-}
-
-res = requests.post('3.88.132.229/begin', json=initial)
-
-
 @app.route('/storedata',methods=['POST'])
 def sendword():
     if request.method == 'POST':
@@ -33,7 +24,12 @@ def sendword():
         if(res1['HTTPStatusCode']==200):
             resdict = { "s3uri": "https://cloudcomputinga2harjot.s3.amazonaws.com/newfile.txt"} 
             return resdict,200
-        
+
+@app.route("/")
+def index():
+    res = requests.post('http://3.88.132.229/begin', json={"banner": "B00872298",
+    "ip": "3.85.50.76"})
+    return res.content
 
 if __name__ == '__main__':
     server_port = os.environ.get('PORT', '80')
