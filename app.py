@@ -1,5 +1,5 @@
 from queue import Empty
-from urllib import response
+from urllib import response, request
 from flask import Flask, jsonify,render_template, request, redirect, url_for, session, logging,Response
 import boto3
 import os, requests
@@ -10,16 +10,17 @@ app.config['JSON_SORT_KEYS'] = False
 s3 = boto3.resource(
     's3',
     region_name='us-east-1',
-    aws_access_key_id="ASIA52YPANNBK7GJ35F4",
-    aws_secret_access_key="7763hkM1BaXEm2ZdhzVIwWU77PB5euQbeH+bSiXi",
-    aws_session_token="FwoGZXIvYXdzENz//////////wEaDHofZOMxcL6cLj8EkyLAAdsqBhEr8x4mQCXCPq9CP3YrA8Y5hz7IEY0vA09gBK8sW2J4oKuYvaSdlz5+oiNCOvemgeKiNuHkNFul98LweNl6iYn1je5jr3LJtYED/95vFggQOf/glx0MFOdyr1GwTQp9Ycls/iot/wfXoTV912CVmnFjoUhnlvlfSH3pgcdv4Y37B5gbyZnALHajJnuOsN7CEX1rILDCov5UIQM4We8tnFanKtL3KH1c/mE4LqxlKHQQUa5WY7uOuKVeyU56QSjP6P6QBjItKeA1U9SETKAOMPSylwQzfDdtn7L1RGvkrjkYV9RBoSJE8RnPVLIuPi9wyoJG"
+    aws_access_key_id="ASIA52YPANNBNACEDROM",
+    aws_secret_access_key="nyUcYh3nsMZ4u4kxqqgOt12Mntkj57D/jzKqGfR6",
+    aws_session_token="FwoGZXIvYXdzEAcaDNDPVhEOgkjFKg76sCLAAf4p55KivDzuFbAPKhJJFNxJGYoz+WnE/EmEOD2EFspMDfWPmJB1+6iZCqQ984o4vvECcuTDJdE54mb2kcPKyJ4+lKiIWJ8rxCztfhRY60nO7mujPL2ZYG13+pxhXfm9VlWcZgh9TkHpCCun0+vTwrdjT3Qe05Y2j1dXoI8iVzOV/dhc+p7ikBiLCL/xz7GZ41mwdu0gjIwADuk/XyIpn83y1Vbhxt3KshCDztBxouKCUp0VxegpBVrFk2Au90l0wyjMtIiRBjItWMygGb5xwmkkDf/9POfGJqxoGXgFj5bXrkPjFaH2lJciPrjECGRrR23bFljS"
 )
 
 initial = {
-"banner": "<Replace with your Banner ID, e.g. B00123456>",
-"ip": ""
+"banner": "B00872298",
+"ip": "3.85.50.76"
 }
 
+res = requests.post('3.88.132.229/begin', json=initial)
 
 
 @app.route('/storedata',methods=['POST'])
@@ -30,7 +31,7 @@ def sendword():
         res = s3.Object('cloudcomputinga2harjot', 'newfile.txt').put(Body=data,ACL='public-read')
         res1 = res['ResponseMetadata']
         if(res1['HTTPStatusCode']==200):
-            resdict = { "s3uri": "s3://cloudcomputinga2harjot/newfile.txt"} 
+            resdict = { "s3uri": "https://cloudcomputinga2harjot.s3.amazonaws.com/newfile.txt"} 
             return resdict,200
         
 
