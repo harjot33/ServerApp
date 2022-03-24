@@ -21,7 +21,7 @@ database = ""
 
 def get_secret():
 
-    secret_name = "dbpass"
+    secret_name = "a3dbsecret"
     region_name = "us-east-1"
 
     # Create a Secrets Manager client
