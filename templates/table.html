@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang = "en">
+<style>
+    table, th, td {
+  border:1px solid black;
+}
+</style>
+<head>
+</head>
+<body style= "max-width:fit-content; margin: auto;">
+    <table>
+        <thead>
+        <tr>
+            <th>First_Name</th>
+            <th>Last_Name</th>
+            <th>Banner ID</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                </tr>
+            {% endfor %}       
+        </tbody>
+    </table>
+</body>
+</html>
