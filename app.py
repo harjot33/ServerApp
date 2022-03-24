@@ -27,9 +27,9 @@ def get_secret():
     # Create a Secrets Manager client
     session = boto3.session.Session()
     client = session.client(    region_name='us-east-1',
-    aws_access_key_id="ASIA52YPANNBLUZZD34W",
-    aws_secret_access_key="WKYBpVFag+uiAhZw9cCKg8Fxm9yOSDFe2HwwG74G",
-    aws_session_token="FwoGZXIvYXdzEOn//////////wEaDNDu5wpF/zRjPaAlkCLAAayvmlDt/yEEnxkPnZWQNOMdKshQpSLTmha1D/p5RHQznrLhdiuJYNZOCd25Mpq14eU9m7aF1YJBIMbbH/GNNZdQQXSV6aTj/iEb3Wx/bCcLEOwV5zklohxG4nP0oZl52D4PBmrw/529ZOMPOvs+bIkYSha5bBkPePPRu1c84F+2+zrk+61QLZBD7AYRIz1AisGQF1seLgBPTR0V8t0Oc6xm9h3n0hA4ZnxekdQTs8dwD1bOkzQnbKQidpUtbXfLISiblfKRBjItbLumVxEPEL7xwYBWwV6xmkH2zJn+lAaeDCD+WhemMiSiKCmAE8ZEb50YYSkN",
+    aws_access_key_id="ASIA52YPANNBFSIOOBSV",
+    aws_secret_access_key="yM2sK8DwelMMHfIdSax2iZqc7951N81OL7sdlnpI",
+    aws_session_token="FwoGZXIvYXdzEO3//////////wEaDKDqTMVk+Fb++UioQSLAAb1/bq2p0zd96sSIvyBN5lW0ouRVZPqIK6PUUdlCjwS/O8zhhffxApC7tjRXnbFE8aVOePVV3tc2jLp4PFDnaiojEE1wcMdvMRRgs/izP8Y/MrPFGsXrVjIVg17jHTMzcorkSyX2g364SaVlHV65DIe82PUoa3DZEnJ61ltrXSFIHFVc8lOES/vITLmwezNyj9BMCS25qJuaL8jlyXIVs3ukq2YsdyuqSrN6thswMN88sigvl+j9K8kTmZZz5GuKMijbi/ORBjItMtDcZEzY1zfxsVaA5TQqIFT2IMd9S4banKKiE9o9em2cPeQD1DsbBpmZfIMt",
         service_name='secretsmanager',
     )
 
